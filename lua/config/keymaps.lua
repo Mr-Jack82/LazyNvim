@@ -19,7 +19,7 @@ map("i", "<C-h>", "<Left>", { noremap = true, silent = true })
 map("i", "<C-l>", "<Right>", { noremap = true, silent = true })
 
 -- Make {motion} text uppercase in INSERT mode.
-map("!", "<C-f>", "<Esc>gUiw`]a", { noremap = false })
+map("!", "<C-s>", "<Esc>gUiw`]a", { noremap = false })
 
 -- Move text around
 map("v", "J", ":m '>+1<CR>gv=gv")
