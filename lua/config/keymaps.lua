@@ -40,26 +40,3 @@ map("n", "U", "<C-r>")
 -- Set working directory to the current buffer's directory
 map("n", "cd", ":lcd %:p:h<bar>lua print('current directory is ' .. vim.fn.getcwd())<CR>", { silent = false })
 map("n", "cu", "..<bar>pwd<CR>", { silent = false })
-
--- Some additional mappings for Hop
-local ok, hop = pcall(require, "hop")
-if not ok then
-  return
-end
-
-local directions = require("hop.hint").HintDirection
-
-map("", "t", function()
-  hop.hint_char1({
-    direction = directions.AFTER_CURSOR,
-    current_line_only = true,
-    hint_offset = -1,
-  })
-end, { remap = true })
-map("", "T", function()
-  hop.hint_char1({
-    direction = directions.BEFORE_CURSOR,
-    current_line_only = true,
-    hint_offset = 1,
-  })
-end, { remap = true })
