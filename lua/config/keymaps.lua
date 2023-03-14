@@ -12,6 +12,7 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+-- Save files without write permissions via sudo
 vim.cmd([[cabbrev w!! execute 'silent write !sudo tee % >/dev/null' <bar> edit!]])
 
 -- Moving left/right in *INSERT* mode
