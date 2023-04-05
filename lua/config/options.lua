@@ -8,4 +8,5 @@ local opt = vim.opt
 opt.scrolloff = 6
 opt.textwidth = 80
 opt.colorcolumn = "81"
+opt.cmdheight = 0
 opt.softtabstop = 2
