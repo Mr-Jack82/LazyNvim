@@ -1,34 +1,48 @@
--- https://github.com/dpetka2001/dotfiles/blob/main/dot_config/nvim/lua/plugins/editor.lua
+-- https://github.com/ooloth/dotfiles/blob/main/config/nvim/lua/plugins/neo-tree.lua
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  opts = {
-    window = {
-      mappings = {
-        ["l"] = "open",
-        ["h"] = "close_node",
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    keys = function() -- replace all default keys
+      return {
+        {
+          "<leader>fe",
+          function()
+            -- see: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/editor.lua
+            require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          end,
+          desc = "Explorer",
+        },
+        { "<leader>e", "<leader>fe", desc = "Explorer", remap = true },
+      }
+    end,
+    opts = {
+      event_handlers = {
+        -- see: https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes#auto-close-on-open-file
+        {
+          event = "file_opened",
+          handler = function()
+            --auto close
+            require("neo-tree").close_all()
+          end,
+        },
       },
-    },
-    event_handlers = {
-      {
-        event = "file_added",
-        handler = function(destination)
-          local uv = vim.loop
-          local file_info = uv.fs_stat(destination)
-          if not file_info then
-            return
-          elseif file_info.type == "file" then
-            uv.fs_chmod(destination, 436) -- (436 base 10) == (664 base 8)
-          elseif file_info.type == "directory" then
-            uv.fs_chmod(destination, 509) -- 644 does not work for directories I guess?
-          end
-        end,
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = { ".git" },
+        },
       },
-      {
-        event = "file_opened",
-        handler = function()
-          --auto close
-          require("neo-tree").close_all()
-        end,
+      window = {
+        mappings = {
+          ["<space>"] = "none",
+          ["."] = "none",
+          ["h"] = "close_node",
+          ["l"] = "open",
+          ["s"] = "open_split",
+          ["v"] = "open_vsplit",
+        },
+        width = 40,
       },
     },
   },
