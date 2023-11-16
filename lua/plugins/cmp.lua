@@ -31,10 +31,6 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
-      opts.completion = {
-        completeopt = "menu,menuone,noselect",
-      }
-
       opts.window = {
         -- completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
