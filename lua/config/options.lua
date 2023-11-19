@@ -10,3 +10,4 @@ opt.textwidth = 80
 opt.colorcolumn = "81"
 opt.cmdheight = 0
 opt.softtabstop = 2
+opt.ttimeoutlen = 0
