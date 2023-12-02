@@ -16,6 +16,9 @@ map("i", "<C-l>", "<Right>", { noremap = true, silent = true })
 -- Make {motion} text uppercase in INSERT mode.
 map("!", "<C-b>", "<Esc>gUiw`]a", { noremap = false })
 
+-- Allow 'gf' to open non-existent files
+map("", "gf", "<cmd>edit <cfile><CR>", { noremap = true, silent = true })
+
 -- Select last pasted text
 map("n", "gV", "'`[' . strpart(getregtype(), 0, 1) . '`]'", { expr = true })
 
