@@ -11,7 +11,7 @@ map("i", "<C-h>", "<Left>", { noremap = true, silent = true })
 map("i", "<C-l>", "<Right>", { noremap = true, silent = true })
 
 -- Make {motion} text uppercase in INSERT mode.
-map("!", "<C-s>", "<Esc>gUiw`]a", { noremap = false })
+map("!", "<C-b>", "<Esc>gUiw`]a", { noremap = false })
 
 -- Select last pasted text
 map("n", "gV", "'`[' . strpart(getregtype(), 0, 1) . '`]'", { expr = true })
