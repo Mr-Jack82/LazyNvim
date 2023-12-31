@@ -34,13 +34,13 @@ end, { expr = true })
 map("n", "gV", '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true, desc = "Visually select changed text" })
 
 -- When joining lines keep cursor position
-map("n", "J", "mzJ`z")
+map("n", "J", "mzJ`z", { desc = "Join lines" })
 
 -- repeat last command for each line of a visual selection
 map("x", ".", "<cmd>normal .<CR>", { noremap = true })
 
 -- U for redo, the opposite of for undo
-map("n", "U", "<C-r>")
+map("n", "U", "<C-r>", { desc = "Redo" })
 
 -- Set working directory to the current buffer's directory
 map("n", "cd", ":lcd %:p:h<bar>lua print('current directory is ' .. vim.fn.getcwd())<CR>", { silent = false })
