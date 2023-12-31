@@ -9,9 +9,10 @@ unmap({ "n", "s", "x" }, "<C-S>")
 -- Save files without write permissions via sudo
 vim.cmd([[cabbrev w!! execute 'silent write !sudo tee % >/dev/null' <bar> edit!]])
 
--- Moving left/right in *INSERT* mode
-map("i", "<C-h>", "<Left>", { noremap = true, silent = true })
-map("i", "<C-l>", "<Right>", { noremap = true, silent = true })
+-- Moving left/right in *INSERT* and *COMMAND* mode
+-- Using `silent = false` makes movements to be immediately shown.
+map({ "i", "c" }, "<C-h>", "<Left>", { silent = false, desc = "Move Left" })
+map({ "i", "c" }, "<C-l>", "<Right>", { silent = false, desc = "Move Right" })
 
 -- Make {motion} text uppercase in INSERT mode.
 map("!", "<C-b>", "<Esc>gUiw`]a", { noremap = false })
