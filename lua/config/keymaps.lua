@@ -43,5 +43,5 @@ map("x", ".", "<cmd>normal .<CR>", { noremap = true })
 map("n", "U", "<C-r>", { desc = "Redo" })
 
 -- Set working directory to the current buffer's directory
-map("n", "cd", ":lcd %:p:h<bar>lua print('current directory is ' .. vim.fn.getcwd())<CR>", { silent = false })
+map("n", "cd", "<cmd>lcd %:p:h<bar>lua print('current directory is ' .. vim.fn.getcwd())<CR>", { silent = false })
 map("n", "cu", "..<bar>pwd<CR>", { silent = false })
