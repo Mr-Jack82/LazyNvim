@@ -20,8 +20,18 @@ map("!", "<C-b>", "<Esc>gUiw`]a", { noremap = false })
 -- Allow 'gf' to open non-existent files
 map("", "gf", "<cmd>edit <cfile><CR>", { noremap = true, silent = true })
 
--- Select last pasted text
-map("n", "gV", "'`[' . strpart(getregtype(), 0, 1) . '`]'", { expr = true })
+-- Make sure to go to proper indentantion level when pressing i
+-- source: https://www.reddit.com/r/neovim/comments/12rqyl8/5_smart_minisnippets_for_making_text_editing_more/
+map("n", "i", function()
+  if #vim.fn.getline(".") == 0 then
+    return [["_cc]]
+  else
+    return "i"
+  end
+end, { expr = true })
+
+-- Reselect latest changed, put, or yanked text
+map("n", "gV", '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true, desc = "Visually select changed text" })
 
 -- When joining lines keep cursor position
 map("n", "J", "mzJ`z")
