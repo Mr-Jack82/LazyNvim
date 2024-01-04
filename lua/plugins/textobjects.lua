@@ -1,3 +1,5 @@
+-- Taken from:
+-- https://github.com/kapral18/config.nvim/blob/main/lua/plugins/treesitter.lua
 return {
   {
     "nvim-treesitter/nvim-treesitter",
