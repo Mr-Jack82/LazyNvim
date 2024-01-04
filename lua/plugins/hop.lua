@@ -5,7 +5,7 @@ return {
   opts = {
     keys = "etovxqpdygfblzhckisuran",
   },
-  init = function()
+  config = function()
     local hop = require("hop")
     hop.setup({ uppercase_labels = true })
 
