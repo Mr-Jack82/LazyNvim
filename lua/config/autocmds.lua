@@ -28,7 +28,7 @@ autocmd("BufWritePost", {
 autocmd("BufWritePre", {
   pattern = "*",
   desc = "Delete trailing white space",
-  group = augroup("TrimTrailingSpace", { clear = true }),
+  group = "mygroup",
   callback = function()
     local pos = vim.api.nvim_win_get_cursor(0)
 
