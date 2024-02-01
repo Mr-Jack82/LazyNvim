@@ -4,7 +4,7 @@
 local map = vim.keymap.set
 local unmap = vim.keymap.del
 
-unmap({ "n", "s", "x" }, "<C-S>")
+unmap({ "i", "x", "n", "s" }, "<C-s>")
 
 -- Save files without write permissions via sudo
 vim.cmd([[cabbrev w!! execute 'silent write !sudo tee % >/dev/null' <bar> edit!]])
